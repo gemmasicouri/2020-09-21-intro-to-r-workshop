@@ -190,6 +190,7 @@ glengths
 
 species <- c("ecoli", "human", "corn")
 species
+(species)
 
 length(glengths)
 length(species)
@@ -221,6 +222,7 @@ true_or_false_value <- TRUE
 decimal_number = 54.0
 whole_number = -54L
 
+result <- sqrt (x = 16)
 
 class(sqrt_of_minus_one)
 class(true_or_false_value)
@@ -263,6 +265,7 @@ class(decimal_number)
 #   char_logical <- c("a", "b", "c", TRUE)
 #   combined_logical <- c(num_logical, char_logical)
 
+class(char_logical)
 
 #
 # Topic: Subsetting vectors
@@ -300,7 +303,7 @@ animals[animals %in% c("rat", "cat", "dog", "duck", "goat")]
 #
 # returns TRUE?
 #
-# Answer:
+# Answer: because they are characters and not integers and compared alphabetically.
 
 
 # Topic: Missing data (NA - Not Available)
@@ -311,9 +314,13 @@ max(heights)
 mean(heights, na.rm = TRUE)
 max(heights, na.rm = TRUE)
 
+is.na(heights)
+!is.na(heights)
 heights[!is.na(heights)]
 na.omit(heights)
 heights[complete.cases(heights)]
+heights <- heights[complete.cases(heights)]
+heights
 
 #
 # Exercise (extended)
@@ -322,15 +329,32 @@ heights[complete.cases(heights)]
 # Using this vector of heights in inches, create a new vector 
 # with the NAs removed.
 # 
-#   heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
+  heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
+
+
 #
 # Solution
+
+is.na(heights)
+!is.na(heights)
+na.omit(heights)
+heights[complete.cases(heights)]
+heights <- na.omit(heights)
 
 # Use the function median() to calculate the median of the heights vector.
 #
 # Solution
 
+median(heights)
+
+OR
+
+median(na.omit(heights))          # this is before you convert heights
+
 # Use R to figure out how many people in the set are taller than 67 inches.
+
+heights[heights > 67]
+
 #
 # [Hint: R has a builtin function called length() that tells you 
 # how many values are in a vector
